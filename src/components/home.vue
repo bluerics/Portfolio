@@ -47,16 +47,12 @@ import profile from '@/assets/profile.png'
         </div>
       </div>
 
-      <!-- Right Side -->
+      <!-- Right Side - 3D R -->
       <div class="flex justify-center md:justify-end">
-        <div
-          class="h-72 w-72 overflow-hidden rounded-full border-4 border-[#34E0A1] md:h-96 md:w-96"
-        >
-          <img
-            :src="profile"
-            alt="Rica Fernando"
-            class="h-full w-full object-cover"
-          />
+        <div class="perspective">
+        <div class="letter-r">
+          R
+        </div>
         </div>
       </div>
 
