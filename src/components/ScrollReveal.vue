@@ -12,7 +12,6 @@ onMounted(() => {
         if (entry.isIntersecting) {
           entry.target.classList.add('show')
         } else {
-          // Remove this if you only want the animation to happen once
           entry.target.classList.remove('show')
         }
       })

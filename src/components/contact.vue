@@ -27,7 +27,7 @@ const closeContact = () => {
     <div class="mx-auto w-full max-w-6xl">
       <ScrollReveal>
 
-        <!-- Heading -->
+       
         <div class="mb-14 text-center">
           <p
             class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#67D5D0]"
@@ -52,7 +52,7 @@ const closeContact = () => {
         <div class="connection-terminal">
           <div class="terminal-glow"></div>
 
-          <!-- Terminal Header -->
+         
           <div
             class="relative flex items-center justify-between border-b border-[#67D5D0]/20 px-6 py-4"
           >
@@ -71,12 +71,12 @@ const closeContact = () => {
             </span>
           </div>
 
-          <!-- Main Content -->
+          
           <div
             class="relative grid items-center gap-12 p-8 md:grid-cols-2 md:p-12"
           >
 
-            <!-- Left Side -->
+            
             <div>
               <p class="text-sm text-[#67D5D0]">
                 STATUS
@@ -107,7 +107,7 @@ const closeContact = () => {
                 feel free to reach out.
               </p>
 
-              <!-- Email Button -->
+              
               <button
                 type="button"
                 @click="openContact('email')"
@@ -118,20 +118,20 @@ const closeContact = () => {
               </button>
             </div>
 
-            <!-- Orbit -->
+            
             <div class="orbit-container">
 
               <!-- Orbit Rings -->
               <div class="orbit-ring orbit-ring-one"></div>
               <div class="orbit-ring orbit-ring-two"></div>
 
-              <!-- Center -->
+              
               <div class="orbit-center">
                 <span>R</span>
                 <div></div>
               </div>
 
-              <!-- Email -->
+              
               <button
                 type="button"
                 class="orbit-item orbit-email"
@@ -142,7 +142,7 @@ const closeContact = () => {
                 <span>Email</span>
               </button>
 
-              <!-- GitHub -->
+              
               <button
                 type="button"
                 class="orbit-item orbit-github"
@@ -153,7 +153,7 @@ const closeContact = () => {
                 <span>GitHub</span>
               </button>
 
-              <!-- LinkedIn -->
+              
               <button
                 type="button"
                 class="orbit-item orbit-linkedin"
@@ -167,7 +167,7 @@ const closeContact = () => {
             </div>
           </div>
 
-          <!-- Footer -->
+          
           <div
             class="relative border-t border-[#67D5D0]/20 px-6 py-4 text-center"
           >
@@ -183,7 +183,7 @@ const closeContact = () => {
     </div>
   </section>
 
-  <!-- Contact Popup -->
+  
   <div
     v-if="activeContact"
     class="contact-popup-overlay"
@@ -191,7 +191,7 @@ const closeContact = () => {
   >
     <div class="contact-popup">
 
-      <!-- Close -->
+      
       <button
         type="button"
         class="contact-close"
@@ -201,7 +201,7 @@ const closeContact = () => {
         ×
       </button>
 
-      <!-- EMAIL -->
+      
       <template v-if="activeContact === 'email'">
         <div class="contact-popup-icon">
           @
@@ -227,7 +227,7 @@ const closeContact = () => {
         </a>
       </template>
 
-      <!-- GITHUB -->
+      
       <template v-if="activeContact === 'github'">
         <div class="contact-popup-icon">
           GH
@@ -255,7 +255,7 @@ const closeContact = () => {
         </a>
       </template>
 
-      <!-- LINKEDIN -->
+      
       <template v-if="activeContact === 'linkedin'">
         <div class="contact-popup-icon">
           in

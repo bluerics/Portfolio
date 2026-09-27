@@ -10,7 +10,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Scroll reveal animation */
+
 .scroll-reveal {
   opacity: 0;
   transform: translateY(60px) scale(0.95);
@@ -23,7 +23,7 @@ body {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-/* 3D rotating R */
+
 
 .perspective {
   perspective: 1000px;
@@ -513,7 +513,6 @@ body {
 }
 
 
-/* CENTER */
 
 .orbit-center {
   position: absolute;
@@ -572,8 +571,6 @@ body {
   }
 }
 
-
-/* CONTACT ITEMS */
 
 .orbit-item {
   position: absolute;
@@ -634,7 +631,6 @@ body {
 }
 
 
-/* POSITIONS */
 
 .orbit-email {
   top: 5px;
@@ -670,7 +666,7 @@ body {
 }
 
 
-/* MOBILE */
+
 
 @media (max-width: 640px) {
   .orbit-container {
@@ -773,7 +769,7 @@ body {
     0 0 25px rgba(52, 224, 161, 0.12);
 }
 
-/* Popup Animation */
+
 
 @keyframes contactPopupIn {
   from {
@@ -784,5 +780,237 @@ body {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+.about-card {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 4rem;
+
+  padding: 3rem;
+
+  border: 1px solid rgba(103, 213, 208, 0.25);
+  border-radius: 24px;
+
+  background: rgba(3, 54, 61, 0.65);
+
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.3);
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
+
+.about-card:hover {
+  border-color: rgba(52, 224, 161, 0.45);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(52, 224, 161, 0.08);
+}
+
+.about-profile {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.about-photo {
+  width: 260px;
+  height: 260px;
+
+  overflow: hidden;
+
+  border: 3px solid #34e0a1;
+  border-radius: 50%;
+
+  background: rgba(3, 54, 61, 0.8);
+
+  box-shadow:
+    0 0 25px rgba(52, 224, 161, 0.15);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
+
+.about-photo:hover {
+  transform: scale(1.04);
+
+  box-shadow:
+    0 0 40px rgba(52, 224, 161, 0.3);
+}
+
+
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+
+.achievement-wrapper {
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 8px;
+
+  border: 1px solid rgba(103, 213, 208, 0.3);
+  border-radius: 16px;
+
+  background: rgba(0, 0, 0, 0.2);
+
+  box-shadow:
+    0 0 25px rgba(52, 224, 161, 0.08);
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
+.achievement-wrapper:hover {
+  border-color: rgba(52, 224, 161, 0.6);
+
+  box-shadow:
+    0 0 35px rgba(52, 224, 161, 0.12);
+}
+
+
+.achievement-image {
+  display: block;
+
+  width: 100%;
+  height: 260px;
+
+  object-fit: contain;
+
+  border-radius: 10px;
+
+  background: rgba(0, 0, 0, 0.2);
+
+  animation: achievementFade 0.4s ease;
+}
+
+
+@keyframes achievementFade {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.gallery-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(103, 213, 208, 0.4);
+  border-radius: 50%;
+
+  background: rgba(3, 54, 61, 0.8);
+
+  color: #34e0a1;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.gallery-button:hover {
+  transform: scale(1.1);
+
+  border-color: #34e0a1;
+
+  background: rgba(52, 224, 161, 0.1);
+
+  box-shadow:
+    0 0 15px rgba(52, 224, 161, 0.15);
+}
+
+
+.gallery-button:active {
+  transform: scale(0.95);
+}
+
+
+@media (max-width: 768px) {
+
+  .about-card {
+    grid-template-columns: 1fr;
+
+    gap: 3rem;
+
+    padding: 2rem 1.5rem;
+  }
+
+
+  .about-photo {
+    width: 210px;
+    height: 210px;
+  }
+
+
+  .achievement-image {
+    height: 220px;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .about-card {
+    padding: 1.5rem 1rem;
+  }
+
+
+  .about-photo {
+    width: 180px;
+    height: 180px;
+  }
+
+
+  .achievement-image {
+    height: 190px;
   }
 }

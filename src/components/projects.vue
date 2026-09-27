@@ -58,7 +58,7 @@ const projects = [
 
       <ScrollReveal>
 
-        <!-- Heading -->
+        
         <div class="mb-14 text-center">
           <p
             class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#67D5D0]"
@@ -80,11 +80,11 @@ const projects = [
           </p>
         </div>
 
-        <!-- Featured Project -->
+       
         <div
           class="project-featured group relative mb-8 overflow-hidden rounded-2xl"
         >
-          <!-- Glow -->
+          
           <div
             class="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#34E0A1]/10 blur-3xl transition duration-700 group-hover:bg-[#34E0A1]/20"
           ></div>
@@ -92,7 +92,7 @@ const projects = [
           <div
             class="relative grid items-center gap-10 p-8 md:grid-cols-[1fr_280px] md:p-12"
           >
-            <!-- Project Information -->
+            
             <div>
               <div class="mb-5 flex items-center gap-4">
                 <span
@@ -124,7 +124,7 @@ const projects = [
                 {{ projects[0].description }}
               </p>
 
-              <!-- Technologies -->
+              
               <div class="mt-7 flex flex-wrap gap-3">
                 <span
                   v-for="technology in projects[0].technologies"
@@ -136,7 +136,7 @@ const projects = [
               </div>
             </div>
 
-            <!-- Visual -->
+          
             <div class="flex justify-center">
               <div class="project-icon-large">
                 <span>AI</span>
@@ -144,13 +144,13 @@ const projects = [
             </div>
           </div>
 
-          <!-- Bottom line -->
+          
           <div
             class="h-1 w-1/4 bg-[#34E0A1] transition-all duration-700 group-hover:w-full"
           ></div>
         </div>
 
-        <!-- Other Projects -->
+        
         <div class="grid gap-8 md:grid-cols-2">
 
           <div
@@ -158,7 +158,7 @@ const projects = [
             :key="project.title"
             class="project-card group"
           >
-            <!-- Top -->
+            
             <div class="flex items-start justify-between">
               <div>
                 <span
@@ -174,27 +174,27 @@ const projects = [
                 </p>
               </div>
 
-              <!-- Icon -->
+              
               <div class="project-icon">
                 {{ project.icon }}
               </div>
             </div>
 
-            <!-- Title -->
+            
             <h3
               class="mt-8 text-2xl font-bold text-white transition duration-300 group-hover:text-[#34E0A1]"
             >
               {{ project.title }}
             </h3>
 
-            <!-- Description -->
+            
             <p
               class="mt-4 leading-7 text-[#D9F3F1]"
             >
               {{ project.description }}
             </p>
 
-            <!-- Technologies -->
+            
             <div class="mt-6 flex flex-wrap gap-2">
               <span
                 v-for="technology in project.technologies"
@@ -205,7 +205,7 @@ const projects = [
               </span>
             </div>
 
-            <!-- Bottom -->
+            
             <div
               class="mt-8 flex items-center gap-3 text-sm font-semibold text-[#34E0A1]"
             >

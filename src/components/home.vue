@@ -11,7 +11,7 @@ import profile from '@/assets/profile.png'
       class="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-2"
     >
 
-      <!-- Left Side -->
+      
       <div class="text-center md:text-left">
         <p class="text-3xl font-bold text-white">
           Hi, I'm
@@ -47,7 +47,7 @@ import profile from '@/assets/profile.png'
         </div>
       </div>
 
-      <!-- Right Side - 3D R -->
+      
       <div class="flex justify-center md:justify-end">
         <div class="perspective">
         <div class="letter-r">

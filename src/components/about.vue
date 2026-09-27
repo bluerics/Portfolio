@@ -1,6 +1,43 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import profile from '@/assets/profile.png'
-import ScrollReveal from '@/components/ScrollReveal.vue'
+import photo1 from '@/assets/photos/photo1.jpg'
+import photo2 from '@/assets/photos/photo2.jpg'
+import photo3 from '@/assets/photos/photo3.jpg'
+import photo4 from '@/assets/photos/photo4.jpg'
+import photo5 from '@/assets/photos/photo5.jpg'
+import photo6 from '@/assets/photos/photo6.jpg'
+import photo7 from '@/assets/photos/photo7.jpg'
+import photo8 from '@/assets/photos/photo8.jpg'
+import photo9 from '@/assets/photos/photo9.jpg'
+import photo10 from '@/assets/photos/photo10.jpg'
+
+const photos = [
+  photo1,
+  photo2,
+  photo3,
+  photo4,
+  photo5,
+  photo6,
+  photo7,
+  photo8,
+  photo9,
+  photo10,
+]
+
+const currentphoto = ref(0)
+
+const nextphoto = () => {
+  currentphoto.value =
+    (currentphoto.value + 1) % photos.length
+}
+
+const previousphoto = () => {
+  currentphoto.value =
+    (currentphoto.value - 1 + photos.length) %
+    photos.length
+}
 </script>
 
 <template>
@@ -10,117 +47,156 @@ import ScrollReveal from '@/components/ScrollReveal.vue'
   >
     <div class="mx-auto w-full max-w-6xl">
 
-      <ScrollReveal>
+      
+      <div class="mb-14 text-center">
+        <p
+          class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#67D5D0]"
+        >
+          Get to know me
+        </p>
 
-        <!-- Section Title -->
-        <div class="mb-12 text-center">
-          <p
-            class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#67D5D0]"
-          >
-            Get to know me
+        <h2 class="text-5xl font-bold text-white">
+          About
+          <span class="text-[#34E0A1]">Me</span>
+        </h2>
+      </div>
+
+      
+      <div class="about-card">
+
+        
+        <div class="about-profile">
+
+          
+          <div class="about-photo">
+            <img
+              :src="profile"
+              alt="Rica Fernando"
+            />
+          </div>
+
+          <h3 class="mt-6 text-2xl font-bold text-white">
+            Rica Fernando
+          </h3>
+
+          <p class="mt-2 text-[#67D5D0]">
+            Computer Engineering Student
           </p>
 
-          <h2 class="text-5xl font-bold text-white">
-            About
-            <span class="text-[#34E0A1]">Me</span>
-          </h2>
         </div>
 
-        <!-- About Content -->
-        <div class="grid items-center gap-10 md:grid-cols-2">
 
-          <!-- ================= PHOTO ================= -->
-          <div class="flex justify-center">
-            <div class="photo-perspective">
+        
+        <div class="about-content">
 
-              <div class="photo-card">
-
-                <!-- Green Glow -->
-                <div
-                  class="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-[#34E0A1]/20 blur-3xl"
-                ></div>
-
-                <!-- Photo -->
-                <img
-                  :src="profile"
-                  alt="Rica Fernando"
-                  class="relative h-[420px] w-full rounded-xl object-cover"
-                />
-
-                <!-- Photo Label -->
-                <div
-                  class="absolute bottom-5 left-5 rounded-lg border border-[#67D5D0]/30 bg-black/70 px-4 py-2 backdrop-blur-md"
-                >
-                  <p class="text-sm font-semibold text-[#34E0A1]">
-                    Computer Engineering
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-
-          <!-- ================= MESSAGE ================= -->
-          <div
-            class="rounded-2xl border border-[#67D5D0]/30 bg-[#03363D]/70 p-8 shadow-2xl backdrop-blur-md transition duration-500 hover:border-[#34E0A1]"
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.2em] text-[#67D5D0]"
           >
+            Who I am
+          </p>
 
-            <h3 class="text-3xl font-bold text-white">
-              Hello! I'm
-              <span class="text-[#34E0A1]">
-                Rica Fernando
+          <h3
+            class="mt-3 text-3xl font-bold text-white"
+          >
+            Building ideas into
+            <span class="text-[#34E0A1]">
+              technology.
+            </span>
+          </h3>
+
+          <p
+            class="mt-5 leading-7 text-[#D9F3F1]"
+          >
+            I am a Computer Engineering student with an interest
+            in technology, software development, artificial
+            intelligence, and embedded systems.
+          </p>
+
+          <p
+            class="mt-4 leading-7 text-[#D9F3F1]"
+          >
+            I enjoy learning how hardware and software can work
+            together to create useful and innovative solutions.
+            Through my academic projects, I have explored web
+            development, computer vision, artificial intelligence,
+            databases, and embedded systems.
+          </p>
+
+          <p
+            class="mt-4 leading-7 text-[#D9F3F1]"
+          >
+            I am continuously developing my skills and looking
+            forward to creating technology that can solve
+            real-world problems.
+          </p>
+
+
+          
+          <div class="mt-10">
+
+            <div class="mb-5">
+              <p
+                class="text-sm font-semibold uppercase tracking-[0.2em] text-[#67D5D0]"
+              >
+                My Journey
+              </p>
+
+              <h4
+                class="mt-2 text-2xl font-bold text-white"
+              >
+                Photos
+              </h4>
+            </div>
+
+
+            
+            <div class="photo-wrapper">
+
+              <img
+                :src="photos[currentphoto]"
+                :key="currentphoto"
+                alt="photo"
+                class="photo-image"
+              />
+
+            </div>
+
+
+            
+            <div
+              class="mt-5 flex items-center justify-center gap-6"
+            >
+
+              
+              <button
+                type="button"
+                class="gallery-button"
+                aria-label="Previous photo"
+                @click="previousphoto"
+              >
+                ←
+              </button>
+
+
+              
+              <span
+                class="min-w-[60px] text-center text-sm font-semibold text-[#BDD9D7]"
+              >
+                {{ currentphoto + 1 }}
+                /
+                {{ photos.length }}
               </span>
-            </h3>
 
-            <p class="mt-6 leading-8 text-[#D9F3F1]">
-              I am a Computer Engineering student with an interest in
-              technology, software development, artificial intelligence,
-              and embedded systems.
-            </p>
 
-            <p class="mt-5 leading-8 text-[#D9F3F1]">
-              I enjoy learning how hardware and software can work
-              together to create useful and innovative solutions.
-              Through my academic projects, I have explored web
-              development, computer vision, artificial intelligence,
-              databases, and embedded systems.
-            </p>
-
-            <p class="mt-5 leading-8 text-[#D9F3F1]">
-              I am continuously developing my skills and looking
-              forward to creating technology that can solve real-world
-              problems.
-            </p>
-
-            <!-- Information Cards -->
-            <div class="mt-8 grid gap-4 sm:grid-cols-2">
-
-              <!-- Field -->
-              <div
-                class="rounded-lg border border-[#67D5D0]/20 bg-black/20 p-4 transition duration-300 hover:border-[#34E0A1]"
+              
+              <button
+                type="button"
+                class="gallery-button"
+                aria-label="Next photo"
+                @click="nextphoto"
               >
-                <p class="text-sm text-[#A8D5D2]">
-                  Field
-                </p>
-
-                <p class="mt-1 font-semibold text-white">
-                  Computer Engineering
-                </p>
-              </div>
-
-              <!-- Interests -->
-              <div
-                class="rounded-lg border border-[#67D5D0]/20 bg-black/20 p-4 transition duration-300 hover:border-[#34E0A1]"
-              >
-                <p class="text-sm text-[#A8D5D2]">
-                  Interests
-                </p>
-
-                <p class="mt-1 font-semibold text-white">
-                  AI & Software
-                </p>
-              </div>
+                →
+              </button>
 
             </div>
 
@@ -128,8 +204,7 @@ import ScrollReveal from '@/components/ScrollReveal.vue'
 
         </div>
 
-      </ScrollReveal>
-
+      </div>
     </div>
   </section>
 </template>
