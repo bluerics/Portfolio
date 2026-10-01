@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import bg from '@/assets/bg.mp4'
 import navbar from '@/components/navbar.vue'
 import home from '@/components/home.vue'
 import about from '@/components/about.vue'
@@ -9,20 +8,7 @@ import contact from '@/components/contact.vue'
 </script>
 
 <template>
-   <div class="relative min-h-screen overflow-hidden text-white">
-
-    <video
-      :src="bg"
-      autoplay
-      muted
-      loop
-      playsinline
-      class=" fixed  inset-0 h-full w-full object-cover"
-    ></video>
-
-   
-    <div class="absolute inset-0 bg-[#03363D]/60"></div>
-
+   <div class="relative min-h-screen overflow-hidden bg-[#0A0A0A] text-white">
     <div class="relative z-10">
 
     <navbar />

@@ -28,19 +28,39 @@ const skillCategories = [
     icon: 'DB',
     skills: ['PostgreSQL', 'MySQL', 'Django', 'REST API'],
   },
+  {
+    title: 'PCB Design',
+    icon: 'PCB',
+    skills: [
+      'Schematic Design',
+      'Circuit Layout',
+      'PCB Layout',
+      'Component Selection',
+    ],
+  },
+  {
+    title: 'Power Supply',
+    icon: 'PWR',
+    skills: [
+      'Power Electronics',
+      'Voltage Regulation',
+      'Circuit Design',
+      'Circuit Testing',
+    ],
+  },
 ]
 </script>
 
 <template>
   <section
     id="skills"
-    class="flex min-h-screen items-center px-6 py-24"
+    class="flex min-h-screen items-center bg-[#101418] px-6 py-24"
   >
     <div class="mx-auto w-full max-w-6xl">
 
       <ScrollReveal>
 
-        <!-- Heading -->
+      
         <div class="mb-14 text-center">
           <p
             class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#67D5D0]"
@@ -60,32 +80,28 @@ const skillCategories = [
           </p>
         </div>
 
-        <!-- Skills -->
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-          <!-- Skill Card -->
           <div
-            v-for="category in skillCategories"
+            v-for="(category, index) in skillCategories"
             :key="category.title"
-            class="skill-card group"
+            class="sk-card group"
           >
 
-            <!-- Icon -->
-            <div
-              class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-[#34E0A1]/30 bg-[#34E0A1]/10 font-bold text-[#34E0A1] transition duration-300 group-hover:border-[#34E0A1] group-hover:bg-[#34E0A1]/20"
-            >
+            <span class="sk-number">
+              {{ String(index + 1).padStart(2, '0') }}
+            </span>
+
+            <div class="sk-icon">
               {{ category.icon }}
             </div>
 
-            <!-- Title -->
-            <h3
-              class="text-2xl font-bold text-white transition duration-300 group-hover:text-[#34E0A1]"
-            >
+            <h3 class="sk-title">
               {{ category.title }}
             </h3>
 
-            <!-- Skills -->
-            <div class="mt-5 flex flex-wrap gap-3">
+            <div class="mt-5 flex flex-wrap justify-center gap-2">
               <span
                 v-for="skill in category.skills"
                 :key="skill"
@@ -95,16 +111,13 @@ const skillCategories = [
               </span>
             </div>
 
-            <!-- Line -->
-            <div
-              class="mt-7 h-px w-12 bg-[#34E0A1] transition-all duration-500 group-hover:w-full"
-            ></div>
+            <div class="sk-line"></div>
 
           </div>
 
         </div>
 
-        <!-- Bottom text -->
+        
         <div class="mt-10 text-center">
           <p class="text-sm text-[#BDD9D7]">
             Always learning. Always building. Always improving.
@@ -116,3 +129,124 @@ const skillCategories = [
     </div>
   </section>
 </template>
+
+<style scoped>
+.sk-card {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2.25rem 1.5rem 2rem;
+
+  border: 1px solid rgba(103, 213, 208, 0.25);
+  border-radius: 1.25rem;
+
+  background: #101418;
+
+  text-align: center;
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.sk-card:hover {
+  transform: translateY(-8px);
+
+  border-color: #34e0a1;
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.35),
+    0 0 30px rgba(52, 224, 161, 0.08);
+}
+
+.sk-number {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+
+  color: rgba(103, 213, 208, 0.5);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+
+  transition: color 0.3s ease;
+}
+
+.sk-card:hover .sk-number {
+  color: #34e0a1;
+}
+
+.sk-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 72px;
+  height: 72px;
+
+  margin-bottom: 1.25rem;
+
+  border: 1px solid rgba(52, 224, 161, 0.35);
+  border-radius: 50%;
+
+  background: rgba(52, 224, 161, 0.08);
+
+  color: #34e0a1;
+
+  font-size: 0.95rem;
+  font-weight: 800;
+
+  box-shadow: 0 0 25px rgba(52, 224, 161, 0.08);
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.sk-card:hover .sk-icon {
+  transform: scale(1.08);
+
+  border-color: #34e0a1;
+  background: rgba(52, 224, 161, 0.15);
+}
+
+.sk-title {
+  color: #fff;
+
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  transition: color 0.3s ease;
+}
+
+.sk-card:hover .sk-title {
+  color: #34e0a1;
+}
+
+.sk-line {
+  width: 3rem;
+  height: 1px;
+
+  margin-top: auto;
+  padding-top: 0;
+
+  background: #34e0a1;
+
+  transition: width 0.5s ease;
+}
+
+.sk-card > .sk-line {
+  margin-top: 1.75rem;
+}
+
+.sk-card:hover .sk-line {
+  width: 100%;
+}
+</style>

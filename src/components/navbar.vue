@@ -18,27 +18,13 @@ onUnmounted(() => {
 
 <template>
   <nav
-    class="fixed left-0 top-0 z-50 w-full overflow-hidden border-b border-white/10 transition-all duration-500"
+    class="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#0A0e12] transition-all duration-500"
     :class="
       showNavbar
         ? 'translate-y-0 opacity-100'
         : '-translate-y-full opacity-0'
     "
   >
-    
-    <div class="absolute inset-0 -z-10">
-      <video
-        src="@/assets/bg.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        class="h-full w-full object-cover"
-      ></video>
-
-      
-      <div class="absolute inset-0 bg-[#03363D]/65"></div>
-    </div>
 
     
     <div
@@ -49,7 +35,7 @@ onUnmounted(() => {
         href="#home"
         class="text-xl font-bold text-white transition hover:text-[#34E0A1]"
       >
-        Rica<span class="text-[#34E0A1]">.</span>
+        Portfolio<span class="text-[#34E0A1]">.</span>
       </a>
 
       

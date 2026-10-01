@@ -8,6 +8,7 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
+  background: #0A0E12;
 }
 
 
@@ -78,7 +79,7 @@ body {
 
   border: 1px solid rgba(103, 213, 208, 0.3);
 
-  background: rgba(3, 54, 61, 0.7);
+  background: #0A0E12;
 
   padding: 0.75rem;
 
@@ -121,7 +122,7 @@ body {
   border: 1px solid rgba(103, 213, 208, 0.25);
   border-radius: 1rem;
 
-  background: rgba(3, 54, 61, 0.65);
+  background: #0A0E12;
 
   padding: 2rem;
 
@@ -171,7 +172,7 @@ body {
   border: 1px solid rgba(103, 213, 208, 0.25);
   border-radius: 9999px;
 
-  background: rgba(0, 0, 0, 0.25);
+  background: transparent;
 
   padding: 0.5rem 0.9rem;
 
@@ -196,12 +197,12 @@ body {
   color: #34e0a1;
 }
 .project-featured {
-  border: 1px solid rgba(103, 213, 208, 0.3);
-  background: rgba(3, 54, 61, 0.65);
+  border: 1px solid rgba(59, 158, 255, 0.6);
+  background: #0B0B10;
   backdrop-filter: blur(12px);
 
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 14px rgba(59, 158, 255, 0.35),
+    inset 0 0 14px rgba(59, 158, 255, 0.08);
 
   transition:
     transform 0.5s ease,
@@ -212,11 +213,11 @@ body {
 .project-featured:hover {
   transform: translateY(-8px);
 
-  border-color: rgba(52, 224, 161, 0.7);
+  border-color: #6CB6FF;
 
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.45),
-    0 0 40px rgba(52, 224, 161, 0.08);
+  box-shadow: 0 0 24px rgba(59, 158, 255, 0.6),
+    0 0 50px rgba(59, 158, 255, 0.25),
+    inset 0 0 18px rgba(59, 158, 255, 0.12);
 }
 
 .project-card {
@@ -225,14 +226,18 @@ body {
 
   min-height: 350px;
 
-  border: 1px solid rgba(103, 213, 208, 0.25);
+  border: 1px solid rgba(59, 158, 255, 0.55);
   border-radius: 1rem;
 
-  background: rgba(3, 54, 61, 0.65);
+  background: #0B0B10;
 
   padding: 2rem;
 
   backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 0 14px rgba(59, 158, 255, 0.35),
+    inset 0 0 14px rgba(59, 158, 255, 0.08);
 
   transition:
     transform 0.5s ease,
@@ -252,7 +257,7 @@ body {
 
   border-radius: 50%;
 
-  background: rgba(52, 224, 161, 0.06);
+  background: rgba(59, 158, 255, 0.08);
 
   transition: transform 0.6s ease;
 }
@@ -260,11 +265,11 @@ body {
 .project-card:hover {
   transform: translateY(-10px);
 
-  border-color: #34e0a1;
+  border-color: #6CB6FF;
 
-  box-shadow:
-    0 25px 50px rgba(0, 0, 0, 0.4),
-    0 0 35px rgba(52, 224, 161, 0.08);
+  box-shadow: 0 0 24px rgba(59, 158, 255, 0.6),
+    0 0 50px rgba(59, 158, 255, 0.25),
+    inset 0 0 18px rgba(59, 158, 255, 0.12);
 }
 
 .project-card:hover::before {
@@ -279,24 +284,18 @@ body {
   width: 210px;
   height: 210px;
 
-  border: 1px solid rgba(52, 224, 161, 0.4);
+  border: 1px solid rgba(59, 158, 255, 0.6);
   border-radius: 2rem;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(52, 224, 161, 0.15),
-      rgba(3, 54, 61, 0.5)
-    );
+  background: rgba(52, 224, 161, 0.08);
 
   color: #34e0a1;
 
   font-size: 4rem;
   font-weight: 900;
 
-  box-shadow:
-    0 0 40px rgba(52, 224, 161, 0.08),
-    inset 0 0 30px rgba(52, 224, 161, 0.05);
+  box-shadow: 0 0 24px rgba(59, 158, 255, 0.35),
+    inset 0 0 24px rgba(59, 158, 255, 0.1);
 
   transform: rotate(3deg);
 
@@ -321,7 +320,7 @@ body {
   width: 55px;
   height: 55px;
 
-  border: 1px solid rgba(52, 224, 161, 0.3);
+  border: 1px solid rgba(59, 158, 255, 0.5);
   border-radius: 0.75rem;
 
   background: rgba(52, 224, 161, 0.08);
@@ -338,16 +337,16 @@ body {
 
 .project-card:hover .project-icon {
   transform: rotate(8deg) scale(1.1);
-  border-color: #34e0a1;
+  border-color: #6CB6FF;
 }
 
 .project-tag {
   display: inline-flex;
 
-  border: 1px solid rgba(103, 213, 208, 0.25);
+  border: 1px solid rgba(59, 158, 255, 0.4);
   border-radius: 9999px;
 
-  background: rgba(0, 0, 0, 0.2);
+  background: transparent;
 
   padding: 0.4rem 0.75rem;
 
@@ -363,7 +362,7 @@ body {
 }
 
 .project-tag:hover {
-  border-color: #34e0a1;
+  border-color: #6CB6FF;
   background: rgba(52, 224, 161, 0.08);
   color: #34e0a1;
 }
@@ -374,7 +373,7 @@ body {
   border: 1px solid rgba(103, 213, 208, 0.3);
   border-radius: 1.5rem;
 
-  background: rgba(3, 54, 61, 0.65);
+  background: #0A0E12;
 
   backdrop-filter: blur(14px);
 
@@ -452,8 +451,6 @@ body {
 }
 
 
-/* ORBIT */
-
 .orbit-container {
   position: relative;
 
@@ -530,7 +527,7 @@ body {
   border: 1px solid rgba(52, 224, 161, 0.6);
   border-radius: 50%;
 
-  background: rgba(3, 54, 61, 0.9);
+  background: #0A0E12;
 
   color: #34e0a1;
 
@@ -608,7 +605,7 @@ body {
   border: 1px solid rgba(103, 213, 208, 0.3);
   border-radius: 50%;
 
-  background: rgba(3, 54, 61, 0.9);
+  background: #0A0E12;
 
   color: #34e0a1;
 
@@ -702,7 +699,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(10, 14, 18, 0.85);
   backdrop-filter: blur(8px);
 }
 
@@ -716,7 +713,7 @@ body {
   border: 1px solid rgba(52, 224, 161, 0.4);
   border-radius: 1.25rem;
 
-  background: rgba(3, 54, 61, 0.95);
+  background: #0A0E12;
 
   box-shadow:
     0 25px 60px rgba(0, 0, 0, 0.5),
@@ -792,7 +789,7 @@ body {
   border: 1px solid rgba(103, 213, 208, 0.25);
   border-radius: 24px;
 
-  background: rgba(3, 54, 61, 0.65);
+  background: #050608;
 
   backdrop-filter: blur(14px);
 
@@ -833,7 +830,7 @@ body {
   border: 3px solid #34e0a1;
   border-radius: 50%;
 
-  background: rgba(3, 54, 61, 0.8);
+  background: #050608;
 
   box-shadow:
     0 0 25px rgba(52, 224, 161, 0.15);
@@ -881,7 +878,7 @@ body {
   border: 1px solid rgba(103, 213, 208, 0.3);
   border-radius: 16px;
 
-  background: rgba(0, 0, 0, 0.2);
+  background: transparent;
 
   box-shadow:
     0 0 25px rgba(52, 224, 161, 0.08);
@@ -910,7 +907,7 @@ body {
 
   border-radius: 10px;
 
-  background: rgba(0, 0, 0, 0.2);
+  background: transparent;
 
   animation: achievementFade 0.4s ease;
 }
@@ -941,7 +938,7 @@ body {
   border: 1px solid rgba(103, 213, 208, 0.4);
   border-radius: 50%;
 
-  background: rgba(3, 54, 61, 0.8);
+  background: #050608;
 
   color: #34e0a1;
 
