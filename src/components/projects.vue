@@ -72,7 +72,7 @@ const projects = [
   },
 ]
 
-const featured = computed(() => projects[0])
+const featured = computed(() => projects[0]!)
 const otherProjects = computed(() => projects.slice(1))
 </script>
 
