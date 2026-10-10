@@ -30,18 +30,18 @@ const closeContact = () => {
        
         <div class="mb-14 text-center">
           <p
-            class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#67D5D0]"
+            class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#AAB7B7]"
           >
             Let's connect
           </p>
 
           <h2 class="text-5xl font-bold text-white">
             Open a
-            <span class="text-[#34E0A1]">Connection</span>
+            <span class="text-[#D4D8DD]">Connection</span>
           </h2>
 
           <p
-            class="mx-auto mt-5 max-w-2xl leading-7 text-[#D9F3F1]"
+            class="mx-auto mt-5 max-w-2xl leading-7 text-[#D4D8DD]"
           >
             Have an idea, project, or opportunity? You can find me
             through the channels below.
@@ -54,19 +54,19 @@ const closeContact = () => {
 
          
           <div
-            class="relative flex items-center justify-between border-b border-[#67D5D0]/20 px-6 py-4"
+            class="relative flex items-center justify-between border-b border-[#AAB7B7]/20 px-6 py-4"
           >
             <div class="flex items-center gap-2">
               <span class="terminal-dot"></span>
 
               <span
-                class="text-xs font-semibold tracking-[0.2em] text-[#67D5D0]"
+                class="text-xs font-semibold tracking-[0.2em] text-[#AAB7B7]"
               >
                 CONNECTION TERMINAL
               </span>
             </div>
 
-            <span class="text-xs text-[#BDD9D7]">
+            <span class="text-xs text-[#C0C8CA]">
               ONLINE
             </span>
           </div>
@@ -78,7 +78,7 @@ const closeContact = () => {
 
             
             <div>
-              <p class="text-sm text-[#67D5D0]">
+              <p class="text-sm text-[#AAB7B7]">
                 STATUS
               </p>
 
@@ -94,13 +94,13 @@ const closeContact = () => {
                 class="mt-8 text-3xl font-bold leading-tight text-white md:text-4xl"
               >
                 Let's build something
-                <span class="text-[#34E0A1]">
+                <span class="text-[#D4D8DD]">
                   meaningful.
                 </span>
               </h3>
 
               <p
-                class="mt-5 max-w-md leading-7 text-[#D9F3F1]"
+                class="mt-5 max-w-md leading-7 text-[#D4D8DD]"
               >
                 Whether it's software, artificial intelligence,
                 embedded systems, or a new idea worth exploring,
@@ -111,9 +111,9 @@ const closeContact = () => {
               <button
                 type="button"
                 @click="openContact('email')"
-                class="mt-8 inline-flex items-center gap-3 rounded-lg bg-[#34E0A1] px-6 py-3 font-semibold text-[#03363D] transition duration-300 hover:-translate-y-1 hover:bg-[#67D5D0] hover:shadow-[0_0_25px_rgba(52,224,161,0.25)]"
+                class="mt-8 inline-flex items-center gap-3 rounded-lg bg-[#D4D8DD] px-6 py-3 font-semibold text-[#1A2D42] transition duration-300 hover:-translate-y-1 hover:bg-[#AAB7B7] hover:shadow-[0_0_25px_rgba(52,224,161,0.25)]"
               >
-                Send a Signal
+                Send a message
                 <span>→</span>
               </button>
             </div>
@@ -169,10 +169,10 @@ const closeContact = () => {
 
           
           <div
-            class="relative border-t border-[#67D5D0]/20 px-6 py-4 text-center"
+            class="relative border-t border-[#AAB7B7]/20 px-6 py-4 text-center"
           >
             <p
-              class="text-xs tracking-[0.15em] text-[#BDD9D7]"
+              class="text-xs tracking-[0.15em] text-[#C0C8CA]"
             >
               CONNECTION READY • LET'S CREATE
             </p>
@@ -207,7 +207,7 @@ const closeContact = () => {
           @
         </div>
 
-        <p class="text-sm text-[#67D5D0]">
+        <p class="text-sm text-[#AAB7B7]">
           EMAIL
         </p>
 
@@ -215,13 +215,13 @@ const closeContact = () => {
           {{ email }}
         </h3>
 
-        <p class="mt-3 text-sm text-[#D9F3F1]">
+        <p class="mt-3 text-sm text-[#D4D8DD]">
           Send me a message through email.
         </p>
 
         <a
           :href="`mailto:${email}`"
-          class="mt-6 inline-flex rounded-lg bg-[#34E0A1] px-5 py-3 font-semibold text-[#03363D] transition hover:bg-[#67D5D0]"
+          class="mt-6 inline-flex rounded-lg bg-[#D4D8DD] px-5 py-3 font-semibold text-[#1A2D42] transition hover:bg-[#AAB7B7]"
         >
           Send Email →
         </a>
@@ -233,7 +233,7 @@ const closeContact = () => {
           GH
         </div>
 
-        <p class="text-sm text-[#67D5D0]">
+        <p class="text-sm text-[#AAB7B7]">
           GITHUB
         </p>
 
@@ -241,7 +241,7 @@ const closeContact = () => {
           {{ githubUsername }}
         </h3>
 
-        <p class="mt-3 text-sm text-[#D9F3F1]">
+        <p class="mt-3 text-sm text-[#D4D8DD]">
           Check out my GitHub profile and projects.
         </p>
 
@@ -249,7 +249,7 @@ const closeContact = () => {
           href="https://github.com/bluerics"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-6 inline-flex rounded-lg bg-[#34E0A1] px-5 py-3 font-semibold text-[#03363D] transition hover:bg-[#67D5D0]"
+          class="mt-6 inline-flex rounded-lg bg-[#D4D8DD] px-5 py-3 font-semibold text-[#1A2D42] transition hover:bg-[#AAB7B7]"
         >
           Visit GitHub →
         </a>
@@ -261,7 +261,7 @@ const closeContact = () => {
           in
         </div>
 
-        <p class="text-sm text-[#67D5D0]">
+        <p class="text-sm text-[#AAB7B7]">
           LINKEDIN
         </p>
 
@@ -269,15 +269,15 @@ const closeContact = () => {
           {{ linkedinUsername }}
         </h3>
 
-        <p class="mt-3 text-sm text-[#D9F3F1]">
+        <p class="mt-3 text-sm text-[#D4D8DD]">
           Connect with me on LinkedIn.
         </p>
 
         <a
-          :href="`https://www.linkedin.com/in/${RicaFernando}`"
+          :href="`https://www.linkedin.com/in/rica-fernando`"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-6 inline-flex rounded-lg bg-[#34E0A1] px-5 py-3 font-semibold text-[#03363D] transition hover:bg-[#67D5D0]"
+          class="mt-6 inline-flex rounded-lg bg-[#D4D8DD] px-5 py-3 font-semibold text-[#1AD42] transition hover:bg-[#AAB7B7]"
         >
           Visit LinkedIn →
         </a>

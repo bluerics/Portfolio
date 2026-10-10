@@ -1,22 +1,22 @@
+
 <script setup lang="ts">
-import ScrollReveal from '@/components/ScrollReveal.vue'
-import scarf from '@/assets/projects/scarf.png'
-import pharmacy from '@/assets/projects/pharmacy.svg'
-import pcb from '@/assets/projects/pcb.jpg'
-import powersupply from '@/assets/projects/powersupply.jpg'
+import { computed } from 'vue'
 
+const images = import.meta.glob(
+  '../assets/projects/*.{jpg,jpeg,png,webp,svg}',
+  {
+    eager: true,
+    import: 'default',
+    query: '?url',
+  },
+)
 
-const images = import.meta.glob('../assets/projects/*.{jpg,jpeg,png,webp,svg}', {
-  eager: true,
-  import: 'default',
-}) as Record<string, string>
-
-const getImage = (slug: string): string | null => {
-  const key = Object.keys(images).find(
-    (path) =>
-      path.split('/').pop()?.replace(/\.[^.]+$/, '') === slug
+const getImage = (slug: string): string | undefined => {
+  const entry = Object.entries(images).find(([path]) =>
+    path.split('/').pop()?.split('.')[0] === slug,
   )
-  return key ? images[key] : null
+
+  return entry?.[1] as string | undefined
 }
 
 const projects = [
@@ -26,16 +26,8 @@ const projects = [
     category: 'AI & COMPUTER VISION',
     title: 'SIGNOVA',
     description:
-      'An AI-powered camera-based American Sign Language to Ilocano translation system designed to recognize selected static ASL signs and convert them into Ilocano text and speech.',
-    technologies: [
-      'Python',
-      'CNN',
-      'MediaPipe',
-      'OpenCV',
-      'Raspberry Pi',
-    ],
-    icon: 'AI',
-    featured: true,
+      'An AI-powered camera-based ASL-to-Ilocano translation system that recognizes selected static signs and converts them into Ilocano text and speech.',
+    technologies: ['Python', 'CNN', 'MediaPipe', 'Raspberry Pi'],
     status: 'Ongoing',
   },
   {
@@ -44,15 +36,9 @@ const projects = [
     category: 'EMBEDDED SYSTEMS',
     title: 'SCARF',
     description:
-      'An embedded systems project developed as part of our engineering coursework, combining hardware and software to create a practical technology solution.',
-    technologies: [
-      'Embedded Systems',
-      'Hardware',
-      'Software',
-    ],
-    icon: 'HW',
-    featured: false,
-    status: null,
+      'An embedded systems project combining hardware and software to create a practical technology solution.',
+    technologies: ['Embedded Systems', 'Hardware'],
+    status: 'Completed',
   },
   {
     number: '03',
@@ -60,14 +46,8 @@ const projects = [
     category: 'WEB DEVELOPMENT',
     title: 'Pharmacy Inventory System',
     description:
-      'A web-based inventory management system for managing medicines, suppliers, stocks, and purchase orders.',
-    technologies: [
-      'Django',
-      'PostgreSQL',
-      'REST API',
-    ],
-    icon: 'WEB',
-    featured: false,
+      'A system for managing medicines, suppliers, stocks, and purchase orders.',
+    technologies: ['Django', 'PostgreSQL', 'REST API'],
     status: 'Ongoing',
   },
   {
@@ -76,14 +56,8 @@ const projects = [
     category: 'HARDWARE DESIGN',
     title: 'PCB Design',
     description:
-      'A printed circuit board design project covering circuit schematics, component placement, and board layout, turning an electronic circuit into a board ready for fabrication.',
-    technologies: [
-      'PCB Design',
-      'Schematic Design',
-      'Circuit Layout',
-    ],
-    icon: 'PCB',
-    featured: false,
+      'A circuit board design project covering schematics, component placement, and board layout.',
+    technologies: ['PCB Design', 'Circuit Layout'],
     status: 'Completed',
   },
   {
@@ -92,261 +66,377 @@ const projects = [
     category: 'POWER ELECTRONICS',
     title: 'Power Supply',
     description:
-      'A power supply project focused on designing and building a circuit that converts and regulates electrical power to deliver stable voltage for electronic devices.',
-    technologies: [
-      'Power Electronics',
-      'Circuit Design',
-      'Hardware',
-    ],
-    icon: 'PWR',
-    featured: false,
+      'A circuit design project focused on providing stable voltage for electronic devices.',
+    technologies: ['Power Electronics', 'Circuit Design'],
     status: 'Completed',
   },
 ]
+
+const featured = computed(() => projects[0])
+const otherProjects = computed(() => projects.slice(1))
 </script>
 
 <template>
-  <section
-    id="projects"
-    class="flex min-h-screen items-center bg-[#0B0B10] px-6 py-24"
-  >
-    <div class="mx-auto w-full max-w-6xl">
+  <section id="projects" class="projects-section">
+    <div class="section-heading">
+      <p class="eyebrow">WHAT I'VE BUILT</p>
+      <h2><span>Projects</span></h2>
+      <p class="section-description">
+        A collection of projects I've developed through learning and experimentation.
+      </p>
+    </div>
 
-      <ScrollReveal>
+    <div class="projects-layout">
+      
+      <article class="project-featured">
+        <div class="featured-content">
+          <div class="project-top">
+            <span class="project-number">{{ featured.number }}</span>
+            <span v-if="featured.status" class="status">
+              {{ featured.status }}
+            </span>
+          </div>
 
-        
-        <div class="mb-14 text-center">
-          <p
-            class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#67D5D0]"
-          >
-            What I've built
-          </p>
+          <p class="category">{{ featured.category }}</p>
+          <h3>{{ featured.title }}</h3>
+          <p class="project-description">{{ featured.description }}</p>
 
-          <h2 class="text-5xl font-bold text-white">
-            <span class="text-[#34E0A1]">Projects</span>
-          </h2>
+          <div class="tags">
+            <span
+              v-for="tech in featured.technologies"
+              :key="tech"
+              class="project-tag"
+            >
+              {{ tech }}
+            </span>
+          </div>
 
-          <p
-            class="mx-auto mt-5 max-w-2xl leading-7 text-[#D9F3F1]"
-          >
-            A selection of academic and personal projects that reflect
-            my experience in software development, artificial
-            intelligence, and embedded systems.
-          </p>
+          <div class="featured-image">
+            <img
+              v-if="getImage(featured.slug)"
+              :src="getImage(featured.slug)"
+              :alt="`${featured.title} preview`"
+            />
+            <span v-else class="image-placeholder">SIGNOVA</span>
+          </div>
         </div>
+      </article>
 
-       
-        <div
-          class="project-featured group relative mb-8 overflow-hidden rounded-2xl"
+    
+      <div class="other-projects">
+        <article
+          v-for="project in otherProjects"
+          :key="project.slug"
+          class="project-card"
         >
-          
-          <div
-            class="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#3B9EFF]/10 blur-3xl transition duration-700 group-hover:bg-[#3B9EFF]/20"
-          ></div>
-
-          <div
-            class="relative grid items-center gap-10 p-8 md:grid-cols-[1fr_280px] md:p-12"
-          >
-            
-            <div>
-              <div class="mb-5 flex items-center gap-4">
-                <span
-                  class="text-sm font-bold tracking-[0.25em] text-[#34E0A1]"
-                >
-                  {{ projects[0].number }}
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[#34E0A1]/50"
-                ></span>
-
-                <span
-                  class="text-xs font-semibold tracking-[0.2em] text-[#67D5D0]"
-                >
-                  {{ projects[0].category }}
-                </span>
-
-                <span
-                  v-if="projects[0].status"
-                  :class="projects[0].status === 'Completed' ? 'border-[#67D5D0]/40 bg-[#67D5D0]/10 text-[#67D5D0]' : 'border-[#34E0A1]/40 bg-[#34E0A1]/10 text-[#34E0A1]'" class="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em]"
-                >
-                  <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
-                  {{ projects[0].status }}
-                </span>
-              </div>
-
-              <h3
-                class="text-4xl font-bold text-white md:text-5xl"
-              >
-                {{ projects[0].title }}
-              </h3>
-
-              <p
-                class="mt-6 max-w-2xl leading-8 text-[#D9F3F1]"
-              >
-                {{ projects[0].description }}
-              </p>
-
-              
-              <div class="mt-7 flex flex-wrap gap-3">
-                <span
-                  v-for="technology in projects[0].technologies"
-                  :key="technology"
-                  class="project-tag"
-                >
-                  {{ technology }}
-                </span>
-              </div>
-            </div>
-
-          
-            <div class="flex justify-center">
-              <div
-                v-if="getImage(projects[0].slug)"
-                class="project-image project-image-large"
-              >
-                <img
-                  :src="getImage(projects[0].slug)!"
-                  :alt="projects[0].title"
-                />
-              </div>
-
-              <div v-else class="project-icon-large">
-                <span>AI</span>
-              </div>
-            </div>
+          <div class="project-top">
+            <span class="project-number">{{ project.number }}</span>
+            <span v-if="project.status" class="status">
+              {{ project.status }}
+            </span>
           </div>
 
-          
-          <div
-            class="h-1 w-1/4 bg-[#3B9EFF] shadow-[0_0_12px_rgba(59,158,255,0.8)] transition-all duration-700 group-hover:w-full"
-          ></div>
-        </div>
+          <p class="category">{{ project.category }}</p>
+          <h3>{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
 
-        
-        <div class="grid gap-8 md:grid-cols-2">
+          <div class="tags">
+            <span
+              v-for="tech in project.technologies"
+              :key="tech"
+              class="project-tag"
+            >
+              {{ tech }}
+            </span>
+          </div>
 
-          <div
-            v-for="project in projects.slice(1)"
-            :key="project.title"
-            class="project-card group"
-          >
-            
-            <div
+          <div class="project-image">
+            <img
               v-if="getImage(project.slug)"
-              class="project-image mb-6"
-            >
-              <img
-                :src="getImage(project.slug)!"
-                :alt="project.title"
-              />
-            </div>
-
-            <div class="flex items-start justify-between">
-              <div>
-                <span
-                  class="text-sm font-bold tracking-[0.25em] text-[#34E0A1]"
-                >
-                  {{ project.number }}
-                </span>
-
-                <p
-                  class="mt-3 text-xs font-semibold tracking-[0.15em] text-[#67D5D0]"
-                >
-                  {{ project.category }}
-                </p>
-
-                <span
-                  v-if="project.status"
-                  :class="project.status === 'Completed' ? 'border-[#67D5D0]/40 bg-[#67D5D0]/10 text-[#67D5D0]' : 'border-[#34E0A1]/40 bg-[#34E0A1]/10 text-[#34E0A1]'" class="mt-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em]"
-                >
-                  <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
-                  {{ project.status }}
-                </span>
-              </div>
-
-              
-              <div class="project-icon">
-                {{ project.icon }}
-              </div>
-            </div>
-
-            
-            <h3
-              class="mt-8 text-2xl font-bold text-white transition duration-300 group-hover:text-[#34E0A1]"
-            >
+              :src="getImage(project.slug)"
+              :alt="`${project.title} preview`"
+            />
+            <span v-else class="image-placeholder">
               {{ project.title }}
-            </h3>
-
-            
-            <p
-              class="mt-4 leading-7 text-[#D9F3F1]"
-            >
-              {{ project.description }}
-            </p>
-
-            
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span
-                v-for="technology in project.technologies"
-                :key="technology"
-                class="project-tag"
-              >
-                {{ technology }}
-              </span>
-            </div>
-
-            
-            <div
-              class="mt-8 flex items-center gap-3 text-sm font-semibold text-[#34E0A1]"
-            >
-              <span
-                class="h-px w-8 bg-[#34E0A1] transition-all duration-500 group-hover:w-16"
-              ></span>
-
-              Academic Project
-            </div>
+            </span>
           </div>
-
-        </div>
-
-      </ScrollReveal>
-
+        </article>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.project-image {
+
+.projects-section {
+  padding: 3rem 1.25rem;
+  background: #0b0b10;
+  color: #d4d8dd;
+}
+
+.section-heading {
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin-bottom: 0.4rem;
+  color: #3b9eff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  font-weight: 800;
+}
+
+.section-heading h2 span {
+  color: #d4d8dd;
+}
+
+.section-description {
+  margin-top: 0.4rem;
+  color: #aab7b7;
+  font-size: 0.8rem;
+}
+
+.projects-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 1rem;
+  align-items: stretch;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 8px;
+}
+
+.project-featured,
+.project-card {
   position: relative;
-  overflow: hidden;
-
-  height: 180px;
-
-  border: 1px solid rgba(59, 158, 255, 0.4);
+  min-width: 0;
+  border: 1px solid rgba(59, 158, 255, 0.22);
   border-radius: 0.75rem;
-
-  box-shadow: 0 0 14px rgba(59, 158, 255, 0.2);
+  background: #121820;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.project-image-large {
+.project-featured {
+  overflow: hidden;
+}
+
+.featured-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.85rem;
+}
+
+.other-projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, auto);
+  align-items: stretch;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.75rem;
+  overflow: hidden;
+}
+
+.project-featured:hover,
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: #3b9eff;
+  box-shadow: 0 8px 20px rgba(59, 158, 255, 0.22);
+  z-index: 2;
+}
+
+.project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
+}
+
+.project-number {
+  color: #3b9eff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.status {
+  padding: 0.15rem 0.35rem;
+  border-radius: 999px;
+  background: rgba(59, 158, 255, 0.1);
+  color: #75bcff;
+  font-size: 0.55rem;
+}
+
+.category {
+  margin: 0.45rem 0 0.25rem;
+  color: #aab7b7;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.project-card h3,
+.project-featured h3 {
+  margin: 0;
+  color: #f3f6f8;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.project-description {
+  display: block;
+  margin: 0.4rem 0 0.55rem;
+  color: #aab7b7;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.project-tag {
+  padding: 0.15rem 0.35rem;
+  border: 1px solid rgba(170, 183, 183, 0.15);
+  border-radius: 999px;
+  background: #1a2d42;
+  color: #d4d8dd;
+  font-size: 0.55rem;
+}
+
+.featured-image,
+.project-image {
   width: 100%;
-  height: 240px;
-
-  border-radius: 1.25rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: #1a2d42;
 }
 
+.featured-image {
+  height: 100px;
+  margin-top: 0.75rem;
+}
+
+.project-image {
+  height: 55px;
+  flex-shrink: 0;
+  margin-top: 0.65rem;
+}
+
+.featured-image img,
 .project-image img {
   display: block;
   width: 100%;
   height: 100%;
-
-  object-fit: cover;
-
-  transition: transform 0.6s ease;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-.group:hover .project-image img {
-  transform: scale(1.06);
+.project-featured:hover img,
+.project-card:hover img {
+  transform: scale(1.05);
 }
+
+.image-placeholder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  color: #75bcff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-featured,
+  .project-card img,
+  .project-featured img {
+    transition: none;
+  }
+
+  .project-card:hover,
+  .project-featured:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .projects-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .projects-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .other-projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .other-projects {
+    grid-template-columns: 1fr;
+  }
+
+  .project-image {
+    height: 90px;
+  }
+}
+.project-card,
+.project-featured {
+  position: relative;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.project-card:hover,
+.project-featured:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: #3b9eff;
+  box-shadow: 0 12px 30px rgba(59, 158, 255, 0.3);
+  z-index: 10;
+}
+
+
+.project-card img,
+.project-featured img {
+  transition: transform 0.35s ease;
+}
+
+.project-card:hover img,
+.project-featured:hover img {
+  transform: scale(1.08);
+}
+
 </style>

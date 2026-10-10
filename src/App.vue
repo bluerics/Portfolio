@@ -5,10 +5,11 @@ import about from '@/components/about.vue'
 import skills from '@/components/skills.vue'
 import projects from '@/components/projects.vue'
 import contact from '@/components/contact.vue'
+import Footer from '@/components/Footer.vue'
 </script>
 
 <template>
-   <div class="relative min-h-screen overflow-hidden bg-[#0A0A0A] text-white">
+   <div class="relative min-h-screen overflow-x-hidden bg-[#1A2D42] text-[#D4D8DD]">
     <div class="relative z-10">
 
     <navbar />
@@ -19,7 +20,9 @@ import contact from '@/components/contact.vue'
       <skills />
       <projects />
       <contact />
+    
     </main>
+    <Footer />
     </div>
 
   </div>

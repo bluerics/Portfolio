@@ -20,7 +20,7 @@ import photo3 from '@/assets/photos/photo3.jpg'
           Hi, I'm
         </p>
 
-        <h1 class="text-7xl font-bold text-[#34E0A1] md:text-6xl">
+        <h1 class="text-7xl font-bold text-[#D4D8DD] md:text-6xl">
           Rica Fernando
         </h1>
 
@@ -45,17 +45,18 @@ import photo3 from '@/assets/photos/photo3.jpg'
         <div class="mt-8 flex justify-center gap-4 md:justify-start">
           <a
             href="#projects"
-            class="rounded-lg bg-[#67D5D0] px-6 py-3 font-semibold text-[#03363D] transition hover:bg-[#34E0A1]"
+            class="rounded-lg bg-[#AAB7B7] px-6 py-3 font-semibold text-[#1A2D42] transition hover:bg-[#D4D8DD]"
           >
             View Projects
           </a>
 
           <a
             href="#contact"
-            class="rounded-lg border border-[#67D5D0] px-6 py-3 font-semibold text-[#BDD9D7] transition hover:border-[#34E0A1]"
+            class="rounded-lg border border-[#AAB7B7] px-6 py-3 font-semibold text-[#C0C8CA] transition hover:border-[#D4D8DD]"
           >
             Contact Me
           </a>
+          
         </div>
       </div>
     </div>

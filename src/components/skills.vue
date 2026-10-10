@@ -63,17 +63,17 @@ const skillCategories = [
       
         <div class="mb-14 text-center">
           <p
-            class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#67D5D0]"
+            class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#AAB7B7]"
           >
             What I work with
           </p>
 
           <h2 class="text-5xl font-bold">
-            <span class="text-[#34E0A1]">Skills</span>
+            <span class="text-[#D4D8DD]">Skills</span>
           </h2>
 
           <p
-            class="mx-auto mt-5 max-w-2xl leading-7 text-[#D9F3F1]"
+            class="mx-auto mt-5 max-w-2xl leading-7 text-[#D4D8DD]"
           >
             A collection of technologies and tools I have learned and
             used throughout my academic projects and development work.
@@ -119,7 +119,7 @@ const skillCategories = [
 
         
         <div class="mt-10 text-center">
-          <p class="text-sm text-[#BDD9D7]">
+          <p class="text-sm text-[#C0C8CA]">
             Always learning. Always building. Always improving.
           </p>
         </div>
@@ -157,7 +157,7 @@ const skillCategories = [
 .sk-card:hover {
   transform: translateY(-8px);
 
-  border-color: #34e0a1;
+  border-color: #D4D8DD;
 
   box-shadow:
     0 20px 45px rgba(0, 0, 0, 0.35),
@@ -179,7 +179,7 @@ const skillCategories = [
 }
 
 .sk-card:hover .sk-number {
-  color: #34e0a1;
+  color: #D4D8DD1;
 }
 
 .sk-icon {
@@ -197,7 +197,7 @@ const skillCategories = [
 
   background: rgba(52, 224, 161, 0.08);
 
-  color: #34e0a1;
+  color: #D4D8DD;
 
   font-size: 0.95rem;
   font-weight: 800;
@@ -213,7 +213,7 @@ const skillCategories = [
 .sk-card:hover .sk-icon {
   transform: scale(1.08);
 
-  border-color: #34e0a1;
+  border-color: #D4D8DD;
   background: rgba(52, 224, 161, 0.15);
 }
 
@@ -227,7 +227,7 @@ const skillCategories = [
 }
 
 .sk-card:hover .sk-title {
-  color: #34e0a1;
+  color: #D4D8DD;
 }
 
 .sk-line {
@@ -237,7 +237,7 @@ const skillCategories = [
   margin-top: auto;
   padding-top: 0;
 
-  background: #34e0a1;
+  background: #D4D8DD;
 
   transition: width 0.5s ease;
 }

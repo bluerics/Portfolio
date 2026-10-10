@@ -31,65 +31,65 @@ const focusAreas = [
   'Software Development',
   'Artificial Intelligence',
   'Embedded Systems',
-  'Vision',
+  'Computer Vision',
   'Web Development',
   'Databases',
 ]
 
-const currentphoto = ref(0)
+const currentPhoto = ref(0)
 
-const nextphoto = () => {
-  currentphoto.value = (currentphoto.value + 1) % photos.length
+const nextPhoto = () => {
+  currentPhoto.value = (currentPhoto.value + 1) % photos.length
 }
 
-const previousphoto = () => {
-  currentphoto.value =
-    (currentphoto.value - 1 + photos.length) % photos.length
+const previousPhoto = () => {
+  currentPhoto.value =
+    (currentPhoto.value - 1 + photos.length) % photos.length
 }
 </script>
 
 <template>
   <section
     id="about"
-    class="flex min-h-screen items-center bg-[#050608] px-6 py-24"
+    class="flex min-h-screen items-center bg-[#1A2D42] px-6 py-24 text-[#D4D8DD]"
   >
     <div class="mx-auto w-full max-w-6xl">
       <ScrollReveal>
-
         
         <div class="mb-14 text-center">
           <p
-            class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#67D5D0]"
+            class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#AAB7B7]"
           >
             Get to know me
           </p>
 
-          <h2 class="text-5xl font-bold text-white">
-            About
-            <span class="text-[#34E0A1]">Me</span>
+          <h2 class="text-5xl font-bold text-[#D4D8DD] sm:text-5xl">
+            About <span class="text-[#AAB7B7]">Me</span>
           </h2>
         </div>
 
-        <div class="grid items-stretch gap-12 lg:grid-cols-[1.05fr_1fr]">
-
-          <!-- Left: photo gallery -->
-          <div>
+        
+        <div
+          class="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14"
+        >
+        
+          <div class="mx-auto w-full max-w-[470px]">
             <div class="mb-5">
               <p
-                class="text-sm font-semibold uppercase tracking-[0.2em] text-[#67D5D0]"
+                class="text-sm font-semibold uppercase tracking-[0.2em] text-[#AAB7B7]"
               >
                 My Journey
               </p>
 
-              <h4 class="mt-2 text-2xl font-bold text-white">
+              <h4 class="mt-2 text-2xl font-bold text-[#D4D8DD]">
                 Photos
               </h4>
             </div>
 
             <div class="ab-frame">
               <img
-                :src="photos[currentphoto]"
-                :key="currentphoto"
+                :src="photos[currentPhoto]"
+                :key="currentPhoto"
                 alt="Photo of Rica"
                 class="ab-photo"
               />
@@ -98,7 +98,7 @@ const previousphoto = () => {
                 type="button"
                 class="ab-arrow ab-arrow-left"
                 aria-label="Previous photo"
-                @click="previousphoto"
+                @click="previousPhoto"
               >
                 ←
               </button>
@@ -107,25 +107,27 @@ const previousphoto = () => {
                 type="button"
                 class="ab-arrow ab-arrow-right"
                 aria-label="Next photo"
-                @click="nextphoto"
+                @click="nextPhoto"
               >
                 →
               </button>
 
               <span class="ab-counter">
-                {{ currentphoto + 1 }} / {{ photos.length }}
+                {{ currentPhoto + 1 }} / {{ photos.length }}
               </span>
             </div>
 
+            
             <div class="ab-thumbs">
               <button
                 v-for="(photo, index) in photos"
                 :key="index"
                 type="button"
                 class="ab-thumb"
-                :class="{ 'ab-thumb-active': index === currentphoto }"
+                :class="{ 'ab-thumb-active': index === currentPhoto }"
                 :aria-label="`Show photo ${index + 1}`"
-                @click="currentphoto = index"
+                :aria-pressed="index === currentPhoto"
+                @click="currentPhoto = index"
               >
                 <img :src="photo" alt="" />
               </button>
@@ -133,20 +135,19 @@ const previousphoto = () => {
           </div>
 
           
-          <div class="ab-panel-wrap">
           <div class="ab-panel">
-
+           
             <div class="flex items-center gap-5">
               <div class="ab-avatar">
                 <img :src="profile" alt="Rica Fernando" />
               </div>
 
               <div>
-                <h3 class="text-xl font-bold text-white">
+                <h3 class="text-xl font-bold text-[#D4D8DD]">
                   Rica Fernando
                 </h3>
 
-                <p class="mt-1 text-[#67D5D0]">
+                <p class="mt-1 text-[#AAB7B7]">
                   Computer Engineering Student
                 </p>
               </div>
@@ -155,41 +156,41 @@ const previousphoto = () => {
             <div class="ab-divider"></div>
 
             <p
-              class="text-sm font-semibold uppercase tracking-[0.2em] text-[#67D5D0]"
+              class="text-sm font-semibold uppercase tracking-[0.2em] text-[#AAB7B7]"
             >
               Who I am
             </p>
 
-            <h3 class="mt-2 text-2xl font-bold text-white">
+            <h3 class="mt-2 text-2xl font-bold text-[#D4D8DD] sm:text-3xl">
               Building ideas into
-              <span class="text-[#34E0A1]">technology.</span>
+              <span class="text-[#AAB7B7]">technology.</span>
             </h3>
 
-            <p class="mt-4 text-sm leading-6 text-[#D9F3F1]">
+            <p class="mt-4 text-sm leading-7 text-[#C0C8CA]">
               I am a Computer Engineering student with a strong interest
               in technology, software development, artificial
               intelligence, and embedded systems. I like understanding
               how things work from the circuit level up to the
-              application that people actually use.
+              applications that people actually use.
             </p>
 
-            <p class="mt-3 text-sm leading-6 text-[#D9F3F1]">
+            <p class="mt-3 text-sm leading-7 text-[#C0C8CA]">
               I enjoy learning how hardware and software can work
               together to create useful and innovative solutions.
               Through my academic projects, I have explored web
-              development, computer vision, artificial intelligence,
+              development,artificial intelligence,
               databases, and embedded systems, including an AI-powered
               sign language translation system, an embedded systems
               project, and a web-based pharmacy inventory system.
             </p>
 
-            <p class="mt-3 text-sm leading-6 text-[#D9F3F1]">
+            <p class="mt-3 text-sm leading-7 text-[#C0C8CA]">
               I am continuously developing my skills, learning new tools,
               and looking forward to creating technology that can solve
               real-world problems and make a positive difference.
             </p>
 
-            <div class="ab-tags mt-5 flex flex-wrap gap-2">
+            <div class="ab-tags mt-6 flex flex-wrap gap-2">
               <span
                 v-for="area in focusAreas"
                 :key="area"
@@ -198,11 +199,8 @@ const previousphoto = () => {
                 {{ area }}
               </span>
             </div>
-
-          </div>
           </div>
         </div>
-
       </ScrollReveal>
     </div>
   </section>
@@ -210,42 +208,39 @@ const previousphoto = () => {
 
 <style scoped>
 
+#about {
+  background: #1A2D42;
+  color: #D4D8DD;
+}
+
+
 .ab-frame {
   position: relative;
-  aspect-ratio: 4 / 5;
-  max-height: 640px;
   width: 100%;
-
+  aspect-ratio: 5 / 4;
+  max-height: 520px;
   overflow: hidden;
-
-  border: 1px solid rgba(103, 213, 208, 0.3);
-  border-radius: 1.25rem;
-
-  background: #050608;
-
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-
+  border: 1px solid rgba(170, 183, 183, 0.35);
+  border-radius: 1rem;
+  background: #2E4156;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   transition:
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .ab-frame:hover {
-  border-color: rgba(52, 224, 161, 0.6);
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.45),
-    0 0 40px rgba(52, 224, 161, 0.08);
+  border-color: #AAB7B7;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 }
 
 .ab-photo {
   position: absolute;
   inset: 0;
-
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-
   animation: abFade 0.45s ease;
 }
 
@@ -261,62 +256,59 @@ const previousphoto = () => {
   }
 }
 
+
 .ab-arrow {
   position: absolute;
   top: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 44px;
-  height: 44px;
-
-  border: 1px solid rgba(103, 213, 208, 0.4);
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(212, 216, 221, 0.4);
   border-radius: 50%;
-
-  background: rgba(5, 6, 8, 0.75);
-  color: #34e0a1;
-
+  background: rgba(26, 45, 66, 0.85);
+  color: #D4D8DD;
   font-size: 1.2rem;
   font-weight: bold;
-
   cursor: pointer;
-
   transform: translateY(-50%);
-
   transition:
     transform 0.3s ease,
     border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    background 0.3s ease;
 }
 
 .ab-arrow:hover {
-  transform: translateY(-50%) scale(1.1);
-  border-color: #34e0a1;
-  box-shadow: 0 0 15px rgba(52, 224, 161, 0.2);
+  transform: translateY(-50%) scale(1.08);
+  border-color: #D4D8DD;
+  background: #2E4156;
+}
+
+.ab-arrow:focus-visible,
+.ab-thumb:focus-visible {
+  outline: 2px solid #D4D8DD;
+  outline-offset: 3px;
 }
 
 .ab-arrow-left {
-  left: 14px;
+  left: 12px;
 }
 
 .ab-arrow-right {
-  right: 14px;
+  right: 12px;
 }
+
 
 .ab-counter {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
-
-  border: 1px solid rgba(103, 213, 208, 0.3);
+  right: 12px;
+  bottom: 12px;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid rgba(212, 216, 221, 0.25);
   border-radius: 9999px;
-
-  background: rgba(5, 6, 8, 0.75);
-  padding: 0.25rem 0.75rem;
-
-  color: #bdd9d7;
+  background: rgba(26, 45, 66, 0.9);
+  color: #D4D8DD;
   font-size: 0.75rem;
   font-weight: 600;
 }
@@ -325,29 +317,23 @@ const previousphoto = () => {
 .ab-thumbs {
   display: flex;
   gap: 0.6rem;
-
   margin-top: 1rem;
-  padding-bottom: 0.5rem;
-
+  padding: 2px 2px 0.6rem;
   overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #AAB7B7 #2E4156;
 }
 
 .ab-thumb {
   flex: 0 0 auto;
-
-  width: 64px;
-  height: 64px;
-
+  width: 58px;
+  height: 58px;
   overflow: hidden;
-
   border: 2px solid transparent;
-  border-radius: 0.75rem;
-
-  background: #050608;
-
-  opacity: 0.5;
+  border-radius: 0.65rem;
+  background: #2E4156;
+  opacity: 0.65;
   cursor: pointer;
-
   transition:
     opacity 0.3s ease,
     border-color 0.3s ease,
@@ -355,99 +341,129 @@ const previousphoto = () => {
 }
 
 .ab-thumb img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .ab-thumb:hover {
-  opacity: 0.85;
+  opacity: 0.9;
   transform: translateY(-2px);
 }
 
 .ab-thumb-active {
   opacity: 1;
-  border-color: #34e0a1;
+  border-color: #D4D8DD;
 }
 
-/* Right panel */
 .ab-panel {
-  border: 1px solid rgba(103, 213, 208, 0.25);
-  border-radius: 1.5rem;
-
-  background: #050608;
-  padding: 2rem;
-
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-
-  transition:
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
-.ab-panel:hover {
-  border-color: rgba(52, 224, 161, 0.45);
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(52, 224, 161, 0.08);
-}
 
 .ab-avatar {
   flex: 0 0 auto;
-
-  width: 72px;
-  height: 72px;
-
+  width: 68px;
+  height: 68px;
   overflow: hidden;
-
-  border: 3px solid #34e0a1;
+  border: 2px solid #AAB7B7;
   border-radius: 50%;
-
-  box-shadow: 0 0 25px rgba(52, 224, 161, 0.15);
+  background: #2E4156;
 }
 
 .ab-avatar img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.ab-tags .skill-tag {
-  padding: 0.35rem 0.75rem;
-  font-size: 0.8rem;
-}
 
 .ab-divider {
   height: 1px;
-  margin: 1.25rem 0;
-
-  background: linear-gradient(
-    to right,
-    rgba(52, 224, 161, 0.5),
-    transparent
-  );
+  margin: 1.4rem 0;
+  background: linear-gradient(to right, #AAB7B7, transparent);
 }
 
 
-@media (min-width: 1024px) {
-  .ab-panel-wrap {
-    position: relative;
+.ab-tags .skill-tag {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(170, 183, 183, 0.25);
+  border-radius: 9999px;
+  background: #2E4156;
+  color: #D4D8DD;
+  font-size: 0.8rem;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.ab-tags .skill-tag:hover {
+  border-color: #AAB7B7;
+  background: #364D64;
+}
+
+
+@media (max-width: 1023px) {
+  .ab-frame {
+    max-width: 400px;
+    max-height: 480px;
+    margin-inline: auto;
+  }
+
+  .ab-thumbs {
+    max-width: 400px;
+    margin-inline: auto;
+    margin-top: 1rem;
   }
 
   .ab-panel {
-    position: absolute;
-    inset: 0;
-    overflow-y: auto;
+    max-width: 650px;
+    margin-inline: auto;
   }
 }
 
 @media (max-width: 640px) {
-  .ab-panel {
-    padding: 1.75rem 1.25rem;
+  #about {
+    padding-top: 6rem;
+    padding-bottom: 5rem;
   }
 
   .ab-frame {
-    aspect-ratio: 1 / 1;
+    max-width: 330px;
+    max-height: 420px;
+  }
+
+  .ab-thumb {
+    width: 52px;
+    height: 52px;
+  }
+
+  .ab-avatar {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-photo {
+    animation: none;
+  }
+
+  .ab-arrow,
+  .ab-thumb,
+  .ab-frame,
+  .ab-tags .skill-tag {
+    transition: none;
   }
 }
 </style>
+
