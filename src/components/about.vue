@@ -51,37 +51,37 @@ const previousPhoto = () => {
 <template>
   <section
     id="about"
-    class="flex min-h-screen items-center bg-[#1A2D42] px-6 py-24 text-[#D4D8DD]"
+    class="min-h-screen bg-[#1A2D42] px-4 py-20 text-[#D4D8DD] sm:px-6 sm:py-24 lg:px-8"
   >
     <div class="mx-auto w-full max-w-6xl">
       <ScrollReveal>
-        
-        <div class="mb-14 text-center">
+        <!-- Section heading -->
+        <div class="mb-10 text-center sm:mb-14">
           <p
-            class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-[#AAB7B7]"
+            class="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-[#AAB7B7] sm:text-sm sm:tracking-[0.3em]"
           >
             Get to know me
           </p>
 
-          <h2 class="text-5xl font-bold text-[#D4D8DD] sm:text-5xl">
+          <h2 class="text-4xl font-bold sm:text-5xl">
             About <span class="text-[#AAB7B7]">Me</span>
           </h2>
         </div>
 
-        
+        <!-- Responsive two-column layout -->
         <div
-          class="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14"
+          class="grid min-w-0 grid-cols-1 items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12"
         >
-        
-          <div class="mx-auto w-full max-w-[470px]">
+          <!-- Photo gallery -->
+          <div class="mx-auto w-full min-w-0 max-w-[470px]">
             <div class="mb-5">
               <p
-                class="text-sm font-semibold uppercase tracking-[0.2em] text-[#AAB7B7]"
+                class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AAB7B7] sm:text-sm"
               >
                 My Journey
               </p>
 
-              <h4 class="mt-2 text-2xl font-bold text-[#D4D8DD]">
+              <h4 class="mt-2 text-xl font-bold sm:text-2xl">
                 Photos
               </h4>
             </div>
@@ -90,7 +90,7 @@ const previousPhoto = () => {
               <img
                 :src="photos[currentPhoto]"
                 :key="currentPhoto"
-                alt="Photo of Rica"
+                alt="Photo from my journey"
                 class="ab-photo"
               />
 
@@ -117,7 +117,7 @@ const previousPhoto = () => {
               </span>
             </div>
 
-            
+            <!-- Scrollable thumbnails on small screens -->
             <div class="ab-thumbs">
               <button
                 v-for="(photo, index) in photos"
@@ -134,20 +134,21 @@ const previousPhoto = () => {
             </div>
           </div>
 
-          
+          <!-- About information -->
           <div class="ab-panel">
-           
-            <div class="flex items-center gap-5">
+            <div
+              class="flex min-w-0 items-center gap-4 sm:gap-5"
+            >
               <div class="ab-avatar">
                 <img :src="profile" alt="Rica Fernando" />
               </div>
 
-              <div>
-                <h3 class="text-xl font-bold text-[#D4D8DD]">
+              <div class="min-w-0">
+                <h3 class="break-words text-lg font-bold sm:text-xl">
                   Rica Fernando
                 </h3>
 
-                <p class="mt-1 text-[#AAB7B7]">
+                <p class="mt-1 text-sm leading-6 text-[#AAB7B7] sm:text-base">
                   Computer Engineering Student
                 </p>
               </div>
@@ -156,40 +157,41 @@ const previousPhoto = () => {
             <div class="ab-divider"></div>
 
             <p
-              class="text-sm font-semibold uppercase tracking-[0.2em] text-[#AAB7B7]"
+              class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AAB7B7] sm:text-sm"
             >
               Who I am
             </p>
 
-            <h3 class="mt-2 text-2xl font-bold text-[#D4D8DD] sm:text-3xl">
+            <h3 class="mt-2 text-2xl font-bold leading-tight sm:text-3xl">
               Building ideas into
               <span class="text-[#AAB7B7]">technology.</span>
             </h3>
 
-            <p class="mt-4 text-sm leading-7 text-[#C0C8CA]">
+            <p class="mt-4 text-sm leading-7 text-[#C0C8CA] sm:text-base">
               I am a Computer Engineering student with a strong interest
               in technology, software development, artificial
               intelligence, and embedded systems. I like understanding
-              how things work from the circuit level up to the
-              applications that people actually use.
+              how things work, from the circuit level to the applications
+              that people actually use.
             </p>
 
-            <p class="mt-3 text-sm leading-7 text-[#C0C8CA]">
+            <p class="mt-3 text-sm leading-7 text-[#C0C8CA] sm:text-base">
               I enjoy learning how hardware and software can work
               together to create useful and innovative solutions.
               Through my academic projects, I have explored web
-              development,artificial intelligence,
-              databases, and embedded systems, including an AI-powered
-              sign language translation system, an embedded systems
-              project, and a web-based pharmacy inventory system.
+              development, artificial intelligence, databases, and
+              embedded systems, including an AI-powered sign language
+              translation system, an embedded systems project, and a
+              web-based pharmacy inventory system.
             </p>
 
-            <p class="mt-3 text-sm leading-7 text-[#C0C8CA]">
+            <p class="mt-3 text-sm leading-7 text-[#C0C8CA] sm:text-base">
               I am continuously developing my skills, learning new tools,
               and looking forward to creating technology that can solve
               real-world problems and make a positive difference.
             </p>
 
+            <!-- Skill tags -->
             <div class="ab-tags mt-6 flex flex-wrap gap-2">
               <span
                 v-for="area in focusAreas"
@@ -207,26 +209,24 @@ const previousPhoto = () => {
 </template>
 
 <style scoped>
-
 #about {
+  width: 100%;
+  overflow: clip;
   background: #1A2D42;
   color: #D4D8DD;
+  scroll-margin-top: 80px;
 }
-
 
 .ab-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 5 / 4;
-  max-height: 520px;
   overflow: hidden;
   border: 1px solid rgba(170, 183, 183, 0.35);
   border-radius: 1rem;
   background: #2E4156;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ab-frame:hover {
@@ -241,15 +241,14 @@ const previousPhoto = () => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: abFade 0.45s ease;
+  animation: abFade 0.4s ease;
 }
 
 @keyframes abFade {
   from {
     opacity: 0;
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
@@ -267,22 +266,18 @@ const previousPhoto = () => {
   height: 42px;
   border: 1px solid rgba(212, 216, 221, 0.4);
   border-radius: 50%;
-  background: rgba(26, 45, 66, 0.85);
+  background: rgba(26, 45, 66, 0.88);
   color: #D4D8DD;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transform: translateY(-50%);
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease;
+  transition: transform 0.25s ease, background 0.25s ease;
 }
 
 .ab-arrow:hover {
   transform: translateY(-50%) scale(1.08);
-  border-color: #D4D8DD;
-  background: #2E4156;
+  background: #364D64;
 }
 
 .ab-arrow:focus-visible,
@@ -292,13 +287,12 @@ const previousPhoto = () => {
 }
 
 .ab-arrow-left {
-  left: 12px;
+  left: 10px;
 }
 
 .ab-arrow-right {
-  right: 12px;
+  right: 10px;
 }
-
 
 .ab-counter {
   position: absolute;
@@ -317,27 +311,26 @@ const previousPhoto = () => {
 .ab-thumbs {
   display: flex;
   gap: 0.6rem;
+  width: 100%;
   margin-top: 1rem;
-  padding: 2px 2px 0.6rem;
+  padding: 3px 3px 0.7rem;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
   scrollbar-width: thin;
   scrollbar-color: #AAB7B7 #2E4156;
 }
 
 .ab-thumb {
-  flex: 0 0 auto;
+  flex: 0 0 58px;
   width: 58px;
   height: 58px;
   overflow: hidden;
   border: 2px solid transparent;
   border-radius: 0.65rem;
   background: #2E4156;
-  opacity: 0.65;
+  opacity: 0.7;
   cursor: pointer;
-  transition:
-    opacity 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.3s ease;
+  transition: opacity 0.25s ease, border-color 0.25s ease;
 }
 
 .ab-thumb img {
@@ -348,25 +341,20 @@ const previousPhoto = () => {
 }
 
 .ab-thumb:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  opacity: 1;
 }
 
 .ab-thumb-active {
-  opacity: 1;
   border-color: #D4D8DD;
+  opacity: 1;
 }
+
 
 .ab-panel {
   width: 100%;
   min-width: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  overflow-wrap: anywhere;
 }
-
 
 .ab-avatar {
   flex: 0 0 auto;
@@ -385,7 +373,6 @@ const previousPhoto = () => {
   object-fit: cover;
 }
 
-
 .ab-divider {
   height: 1px;
   margin: 1.4rem 0;
@@ -394,16 +381,16 @@ const previousPhoto = () => {
 
 
 .ab-tags .skill-tag {
-  display: inline-block;
+  max-width: 100%;
   padding: 0.4rem 0.75rem;
   border: 1px solid rgba(170, 183, 183, 0.25);
   border-radius: 9999px;
   background: #2E4156;
   color: #D4D8DD;
   font-size: 0.8rem;
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .ab-tags .skill-tag:hover {
@@ -414,15 +401,13 @@ const previousPhoto = () => {
 
 @media (max-width: 1023px) {
   .ab-frame {
-    max-width: 400px;
-    max-height: 480px;
+    max-width: 470px;
     margin-inline: auto;
   }
 
   .ab-thumbs {
-    max-width: 400px;
+    max-width: 470px;
     margin-inline: auto;
-    margin-top: 1rem;
   }
 
   .ab-panel {
@@ -431,39 +416,54 @@ const previousPhoto = () => {
   }
 }
 
+
 @media (max-width: 640px) {
-  #about {
-    padding-top: 6rem;
-    padding-bottom: 5rem;
+  .ab-frame {
+    aspect-ratio: 4 / 3;
+    border-radius: 0.85rem;
   }
 
-  .ab-frame {
-    max-width: 330px;
-    max-height: 420px;
+  .ab-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .ab-arrow-left {
+    left: 8px;
+  }
+
+  .ab-arrow-right {
+    right: 8px;
   }
 
   .ab-thumb {
-    width: 52px;
-    height: 52px;
+    flex-basis: 50px;
+    width: 50px;
+    height: 50px;
   }
 
   .ab-avatar {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .ab-divider {
+    margin: 1.1rem 0;
   }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .ab-photo {
     animation: none;
   }
 
+  .ab-frame,
   .ab-arrow,
   .ab-thumb,
-  .ab-frame,
   .ab-tags .skill-tag {
     transition: none;
   }
 }
 </style>
-
